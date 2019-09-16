@@ -1,7 +1,8 @@
-package com.fingard.xuesl.netty.share.frame.withoutframe;
+package com.fingard.xuesl.netty.share.bigflow;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
@@ -11,10 +12,9 @@ import java.nio.charset.Charset;
 
 /**
  * @author xuesl
- * @date 2018/11/6
+ * @date 2018/12/13
  */
-public class ClientWithoutFrame {
-
+public class BigFlowClient {
     public static void main(String[] args) {
         Bootstrap bootstrap = new Bootstrap();
 
@@ -23,20 +23,23 @@ public class ClientWithoutFrame {
         bootstrap
                 .group(worker)
                 .channel(NioSocketChannel.class)
-                //TODO 演示打开关闭TCP_NODELAY
                 .option(ChannelOption.TCP_NODELAY, true)
                 .handler(new ChannelInitializer<SocketChannel>() {
+
                     @Override
                     protected void initChannel(SocketChannel socketChannel) throws Exception {
                         socketChannel.pipeline().addLast(new ChannelInboundHandlerAdapter() {
                             @Override
                             public void channelActive(ChannelHandlerContext ctx) throws Exception {
-                                for (int i = 0; i < 100; i++) {
-                                    ByteBuf byteBuf = ctx.alloc().buffer();
-                                    byteBuf.writeBytes("这是一条测试拆包粘包的测试数据，我得让消息再长点才好产生现象。".getBytes(Charset.forName("UTF-8")));
-                                    ctx.channel().writeAndFlush(byteBuf);
+                                ByteBuf byteBuf = ctx.alloc().buffer();
+                                byteBuf.writeBytes("10000000".getBytes("GBK"));
+                                for (int i = 0; i < 10000000; i++) {
+                                    byteBuf.writeBytes("a".getBytes("GBK"));
                                 }
-                                ctx.close();
+//                                System.out.println("可读长度:" + byteBuf.readableBytes() -4);
+
+                                ctx.channel().writeAndFlush(byteBuf);
+//                                ctx.close();
                             }
                         });
                     }
