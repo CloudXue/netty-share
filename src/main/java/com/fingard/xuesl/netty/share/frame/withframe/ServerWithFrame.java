@@ -38,7 +38,7 @@ public class ServerWithFrame {
                     }
                 });
         try {
-            ChannelFuture future = serverBootstrap.bind(10001).sync();
+            ChannelFuture future = serverBootstrap.bind(10002).sync();
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();

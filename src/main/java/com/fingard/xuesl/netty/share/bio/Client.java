@@ -3,13 +3,10 @@ package com.fingard.xuesl.netty.share.bio;
 import java.io.IOException;
 import java.net.Socket;
 
-/**
- * @author 闪电侠
- */
 public class Client {
     private static final String HOST = "127.0.0.1";
     private static final int PORT = 8000;
-    private static final int SLEEP_TIME = 5000;
+    private static final int SLEEP_TIME = 1000;
 
     public static void main(String[] args) throws IOException {
         final Socket socket = new Socket(HOST, PORT);

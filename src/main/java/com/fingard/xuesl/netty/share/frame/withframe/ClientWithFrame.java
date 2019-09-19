@@ -42,7 +42,7 @@ public class ClientWithFrame {
                     }
                 });
         try {
-            ChannelFuture future = bootstrap.connect("127.0.0.1", 10001).sync();
+            ChannelFuture future = bootstrap.connect("127.0.0.1", 10002).sync();
             future.channel().closeFuture().sync();
         } catch (InterruptedException e) {
             e.printStackTrace();

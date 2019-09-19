@@ -15,7 +15,7 @@ import java.util.concurrent.Executors;
 @ChannelHandler.Sharable
 public class ServerBusinessThreadPoolHandler extends ServerBusinessHandler {
     public static final ChannelHandler INSTANCE = new ServerBusinessThreadPoolHandler();
-    private static ExecutorService threadPool = Executors.newFixedThreadPool(10000);
+    private static ExecutorService threadPool = Executors.newFixedThreadPool(100);
 
 
     @Override
