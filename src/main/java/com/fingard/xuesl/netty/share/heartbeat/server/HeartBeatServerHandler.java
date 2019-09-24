@@ -7,6 +7,7 @@ import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
 
 /**
+ *服务端心跳处理器
  * @author xuesl
  * @date 2019/9/19
  */
@@ -16,6 +17,6 @@ public class HeartBeatServerHandler extends SimpleChannelInboundHandler<HeartBea
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, HeartBeatRequest msg) throws Exception {
         log.info("服务端接收到PING");
-//        ctx.writeAndFlush(new HeartBeatResponse());
+        ctx.writeAndFlush(new HeartBeatResponse());
     }
 }

@@ -7,6 +7,7 @@ import io.netty.handler.timeout.IdleStateHandler;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 服务端超时处理
  * @author xuesl
  * @date 2019/9/19
  */

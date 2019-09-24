@@ -4,7 +4,14 @@ import lombok.Data;
 
 import java.io.Serializable;
 
+
 /**
+ * 协议基类，以下为协议内容及长度
+ * +---------------------------------------------------------------+
+ * | magic number| version | serializer| command | length | content|
+ * +---------------------------------------------------------------+
+ * |      4      |    1    |      1    |    1    |    4   | length |
+ *
  * @author xuesl
  * @date 2019/9/19
  */

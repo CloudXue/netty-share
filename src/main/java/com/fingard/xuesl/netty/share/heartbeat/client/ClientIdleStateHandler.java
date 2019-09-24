@@ -1,8 +1,6 @@
 package com.fingard.xuesl.netty.share.heartbeat.client;
 
-import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.handler.timeout.IdleStateHandler;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 客户端超时处理
  * @author xuesl
  * @date 2019/9/19
  */

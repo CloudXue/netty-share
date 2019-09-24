@@ -3,7 +3,6 @@ package com.fingard.xuesl.netty.share.heartbeat.client;
 import com.fingard.xuesl.netty.share.heartbeat.codec.PacketDecoder;
 import com.fingard.xuesl.netty.share.heartbeat.codec.PacketEncoder;
 import com.fingard.xuesl.netty.share.heartbeat.codec.PacketFilter;
-import com.fingard.xuesl.netty.share.heartbeat.server.ServerIdleStateHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelFutureListener;

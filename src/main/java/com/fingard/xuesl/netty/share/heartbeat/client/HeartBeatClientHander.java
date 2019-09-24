@@ -3,13 +3,13 @@ package com.fingard.xuesl.netty.share.heartbeat.client;
 import com.fingard.xuesl.netty.share.heartbeat.protocol.request.HeartBeatRequest;
 import com.fingard.xuesl.netty.share.heartbeat.protocol.response.HeartBeatResponse;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.channel.SimpleChannelInboundHandler;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.TimeUnit;
 
 /**
+ * 客户端心跳处理器
  * @author xuesl
  * @date 2019/9/19
  */

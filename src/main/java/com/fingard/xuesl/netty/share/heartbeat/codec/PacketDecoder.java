@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 解码器
  * @author xuesl
  * @date 2019/9/19
  */
@@ -28,17 +29,15 @@ public class PacketDecoder extends MessageToMessageDecoder<ByteBuf> {
 
     @Override
     protected void decode(ChannelHandlerContext ctx, ByteBuf byteBuf, List<Object> list) throws Exception {
-        JSONSerializer jsonSerializer = new JSONSerializer();
-        byteBuf.skipBytes(4);
-        byteBuf.skipBytes(1);
-        byte serializerType = byteBuf.readByte();
-        byte command = byteBuf.readByte();
-        int length = byteBuf.readInt();
-//        System.out.println(length);
-        byte[] bytes = new byte[length];
-        byteBuf.readBytes(bytes);
-        Object obj = jsonSerializer.deserialize(bytes, commandClasses.get(command));
-        list.add(obj);
+        // TODO 进入该解码器的ByteBuf是已经经过拆包的数据，一个ByteBuf就是一个包，请对该报文进行解码，解码后的对象放入list中即可
+        // TODO 协议可以参考AbstractPacket中的注释，以及PacketEncoder中的编码代码
+
+
+
+
+
+
+        //list.add(obj);
     }
 
 

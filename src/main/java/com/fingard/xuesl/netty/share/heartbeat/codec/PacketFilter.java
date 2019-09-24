@@ -5,6 +5,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 
 /**
+ * 拆包器
  * @author xuesl
  * @date 2019/9/19
  */
