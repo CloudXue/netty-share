@@ -77,7 +77,7 @@ public class ClientDemo {
         socketChannel.read(receiveBuffer);
         receiveBuffer.flip();
         String receiveData = Charset.forName("UTF-8").decode(receiveBuffer).toString();
-
+        if (receiveData != null && receiveData.length() > 0)
         System.out.println("receive server message:" + receiveData);
         receiveBuffer.clear();
     }
