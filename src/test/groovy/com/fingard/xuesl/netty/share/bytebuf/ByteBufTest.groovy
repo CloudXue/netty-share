@@ -6,16 +6,18 @@ import io.netty.buffer.UnpooledByteBufAllocator
 import io.netty.util.ReferenceCountUtil
 import spock.lang.Specification
 
+import java.nio.charset.Charset
+
 /**
  * @author xuesl* @date 2019/9/18
  */
 class ByteBufTest extends Specification {
 
-    void setup(){
+    void setup() {
 
     }
 
-    void cleanup(){
+    void cleanup() {
 
     }
 
@@ -40,7 +42,7 @@ class ByteBufTest extends Specification {
         ByteBuf byteBuf = UnpooledByteBufAllocator.DEFAULT.buffer()
 
         when:
-        for (int i = 0; i< 100; i++) {
+        for (int i = 0; i < 100; i++) {
             byteBuf.writeInt(1)
         }
 
@@ -60,6 +62,25 @@ class ByteBufTest extends Specification {
         ReferenceCountUtil.release(byteBuf)
 
         then:
-        1==1
+        1 == 1
     }
+
+    def "test"() {
+        given:
+        ByteBuf byteBuf = PooledByteBufAllocator.DEFAULT.directBuffer()
+
+        when:
+        byteBuf.writeBytes("0001".getBytes(Charset.forName("UTF-8")))
+        byteBuf.writeInt(1)
+
+        def byteCount = byteBuf.readableBytes()
+        for (int i = 0; i < byteCount; i++) {
+            println(byteBuf.readByte())
+        }
+
+        then:
+        byteBuf.readableBytes() == 8
+        byteBuf.toString(Charset.forName("UTF-8")) == "00011"
+    }
+
 }
